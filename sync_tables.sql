@@ -1,11 +1,5 @@
 create or replace procedure sync_tables(src STRING, trg STRING, index_col STRING)
 BEGIN
-    DECLARE src string;
-
-    declare trg string;
-
-    declare index_col string;
-
     DECLARE src_cols string;
     DECLARE trg_cols string;
     DECLARE t struct <proj string, ds string, tbl string>;
@@ -13,9 +7,7 @@ BEGIN
     DECLARE trg_ds string;
     DECLARE trg_tbl string;
     DECLARE trg_proj string;
-    set src = 'deft-melody-255020.cached.datasession_data';
-    set trg = 'gfn-owox.gfn_source.datasession_data';
-    set index_col = 'SessionIdHash';
+
     set t = (select as struct split(trg, '.')[offset(0)] as proj, split(trg, '.')[offset(1)] as ds,
                  split(trg, '.')[offset(2)] as tbl);
     set s = (select as struct split(src, '.')[offset(0)] as proj, split(src, '.')[offset(1)] as ds,
