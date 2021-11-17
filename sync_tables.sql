@@ -1,7 +1,6 @@
 create or replace procedure sync_tables(src STRING, trg STRING, index_col STRING, partition_clause STRING)
 BEGIN
     DECLARE src_cols string;
-    -- DECLARE trg_cols string;
     DECLARE t struct <proj string, ds string, tbl string>;
     DECLARE s struct <proj string, ds string, tbl string>;
     DECLARE temp_trg string;
